@@ -3,21 +3,21 @@
     {% if form.errors %}
         <ul class="form__errors">
         {% if form.non_field_errors %}
-          <li>{{ form.non_field_errors }}</li>
+            <li>{{ form.non_field_errors }}</li>
         {% endif %}
         {% for field, errors in fields %}
-          {% if errors %}
-            <li>
-              <a href="#{{ field.id_for_label }}" title="Skip to this field">{{ field.label }}</a>
-              <ul class="errorlist">
-                {% for error in errors %}
-                  <li>{{ error }}</li>
-                {% endfor %}
-              </ul>
-            </li>
-          {% endif %}
+            {% if errors %}
+                <li>
+                    <a href="#{{ field.id_for_label }}" title="Skip to this field">{{ field.label }}</a>
+                    <ul class="errorlist">
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
         {% endfor %}
-      </ul>
+        </ul>
     {% endif %}
 
     {% block fields_wrapper %}
