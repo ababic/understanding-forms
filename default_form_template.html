@@ -1,0 +1,68 @@
+<form {% block action %}{% endblock %} class="form {{ form.css_class }}"{% if form.html_id %} id="{{ form.html_id }}"{% endif %}>  
+    
+    {% if form.errors %}
+        <ul class="form__errors">
+        {% if form.non_field_errors %}
+          <li>{{ form.non_field_errors }}</li>
+        {% endif %}
+        {% for field, errors in fields %}
+          {% if errors %}
+            <li>
+              <a href="#{{ field.id_for_label }}" title="Skip to this field">{{ field.label }}</a>
+              <ul class="errorlist">
+                {% for error in errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% block fields_wrapper %}
+        <div class="form__fields {% block fields_wrapper_classname %}{% endblock %}">
+            {% block fields %}
+                {% for field, errors in fields %}
+                    <div class="field {{ field.css_classes }}">
+                        {% if field.widget_type == "checkboxinput" %}   
+                            <div class="checkbox">
+                                {{ field }}
+                                {{ field.label_tag }}
+                            </div> 
+                        {% else %}
+                            {% if field.label %}{{ field.label_tag }}{% endif %}
+                            <div class="form__widget form__widget__{{ field.widget_type }}">
+                                {{ field }}
+                            </div>
+                        {% endif %}
+                        {% if field.help_text %}
+                            <div class="form__field__help">
+                                {{ field.help_text|safe }}
+                            </div>
+                        {% endif %}
+                        {% if errors %}
+                            <div class="form__field__errors">
+                                {{ errors }}
+                            </div>
+                        {% endif %}
+                    <div>
+                {% endif %}
+            {% endblock fields %}
+        </div>
+    {% endblock fields_wrapper %}
+
+    {% block hidden_fields %}
+        {% spaceless %}
+            {% if form.include_csrf %}{% csrf_token %}{% endif %}
+            {% for field in hidden_fields %}{{ field }}{% endif %}
+        {% endspaceless %}
+    {% endblock %}
+
+    <div class="form__button-wrapper">
+        {% block buttons %}
+            <button type="submit" class="btn btn--submit">{{ form.submit_label|default:"Submit" }}</button>
+        {% endblock %}
+    </div>
+
+</form>
