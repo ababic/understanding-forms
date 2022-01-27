@@ -24,14 +24,14 @@ class CrispyFormMixin:
         )
     helper = property(get_form_helper)
 
-   
-
 
 class SearchForm(CrispyFormMixin, forms.Form):
+    # CrispyFormMixin attribute overrides
     method = "GET"
     html_id = "searchform"
     css_class = "form--search"
     
+    # Fields
     query = forms.CharField()
     category = forms.ChoiceField(choices=[('one', "Option one"), ('two', "Option two"), ("three", "Option three")])
     audience = forms.ChoiceField(choices=[('humans', "Humans"), ('robots", "Robots"), ("aliens", "Aliens")])
