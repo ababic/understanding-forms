@@ -17,7 +17,11 @@ class SearchForm(RenderableFormMixin, forms.Form):
     """
     An example form showing how easy it is to use RenderableFormMixin.
     """
+    
+    # RenderableFormMixin overrides
     method = "get"
+    html_id = "searchform"
+    css_class = "form--search"
     
     # Fields added as usual
     query = forms.CharField()
