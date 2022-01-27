@@ -7,7 +7,7 @@ class RenderableFormMixin:
     """
     template_name: str = "forms/default_form.html"
     method: str = "post"
-    disable_csrf: bool = True
+    disable_csrf: bool = False
     html_id: str = None
     css_class: str = ""
   
