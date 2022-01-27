@@ -1,4 +1,4 @@
-<form {% block action %}{% endblock %} class="form {{ form.css_class }}"{% if form.html_id %} id="{{ form.html_id }}"{% endif %}>  
+<form {% block action %}{% endblock %} method="{{ form.method|default:"POST" }}" class="form {{ form.css_class }}"{% if form.html_id %} id="{{ form.html_id }}"{% endif %}>  
     
     {% if form.errors %}
         <ul class="form__errors">
