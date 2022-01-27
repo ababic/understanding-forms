@@ -18,12 +18,12 @@ class SearchForm(RenderableFormMixin, forms.Form):
     An example form showing how easy it is to use RenderableFormMixin.
     """
     
-    # RenderableFormMixin overrides
+    # RenderableFormMixin attribute overrides
     method = "get"
     html_id = "searchform"
     css_class = "form--search"
     
-    # Fields added as usual
+    # Fields
     query = forms.CharField()
     category = forms.ChoiceField(choices=[('one', "Option one"), ('two', "Option two"), ("three", "Option three")])
     audience = forms.ChoiceField(choices=[('humans', "Humans"), ('robots", "Robots"), ("aliens", "Aliens")])
