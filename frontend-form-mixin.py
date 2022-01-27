@@ -10,6 +10,7 @@ class RenderableFormMixin:
     disable_csrf: bool = False
     html_id: str = ""
     css_class: str = ""
+    submit_button_label: str = "Submit"
   
 
 
@@ -22,6 +23,7 @@ class SearchForm(RenderableFormMixin, forms.Form):
     method = "get"
     html_id = "searchform"
     css_class = "form--search"
+    submit_button_label: "Search"
     
     # Fields
     query = forms.CharField()
