@@ -5,7 +5,7 @@ class RenderableFormMixin:
     """
     A mixin that can be applied to Django 4 forms to get them to render more nicely 
     """
-    template_name = "forms/default_form.html"
+    template_name: str = "forms/default_form.html"
     include_csrf: bool = False
     html_id: str = None
     css_class" str = ""
