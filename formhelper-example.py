@@ -1,10 +1,10 @@
 from django import forms
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Submit
+from crispy_forms.layout import Fieldset, HTML, Layout, Submit
 
 
-class CrispyFormMixin:
+class RenderableFormMixin:
     method: str = "POST"
     disable_csrf: bool = False
     html_id: str = ""
@@ -25,8 +25,8 @@ class CrispyFormMixin:
     helper = property(get_form_helper)
 
 
-class SearchForm(CrispyFormMixin, forms.Form):
-    # CrispyFormMixin attribute overrides
+class SearchForm(RenderableFormMixin, forms.Form):
+    # RenderableFormMixin attribute overrides
     method = "GET"
     html_id = "searchform"
     css_class = "form--search"
@@ -45,7 +45,7 @@ class SearchForm(CrispyFormMixin, forms.Form):
                 "category",
                 "audience",
             ),
-            HTML("<p>Don't forget to click the button below:</p>")
+            HTML("<p>Don't forget to click the button below...</p>")
             Submit("Search"),
         )
         return helper
