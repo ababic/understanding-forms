@@ -6,7 +6,7 @@ class RenderableFormMixin:
     A mixin that can be applied to Django 4 forms to get them to render more nicely 
     """
     template_name: str = "forms/default_form.html"
-    method: str = "POST"
+    method: str = "post"
     disable_csrf: bool = True
     html_id: str = None
     css_class: str = ""
@@ -17,7 +17,7 @@ class SearchForm(RenderableFormMixin, forms.Form):
     """
     An example form showing how easy it is to use RenderableFormMixin.
     """
-    method = "GET"
+    method = "get"
     
     # Fields added as usual
     query = forms.CharField()
