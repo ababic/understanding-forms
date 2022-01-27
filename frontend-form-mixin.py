@@ -31,5 +31,5 @@ class SearchForm(RenderableFormMixin, forms.Form):
     
     # Fields
     query = forms.CharField()
-    category = forms.ChoiceField(choices=[('one', "Option one"), ('two', "Option two"), ("three", "Option three")])
-    audience = forms.ChoiceField(choices=[('humans', "Humans"), ('robots", "Robots"), ("aliens", "Aliens")])
+    category = forms.ChoiceField(choices=[("one", "Option one"), ("two", "Option two"), ("three", "Option three")])
+    audience = forms.ChoiceField(choices=[("humans", "Humans"), ("robots", "Robots"), ("aliens", "Aliens")])
