@@ -54,7 +54,7 @@
 
     {% block hidden_fields %}
         {% spaceless %}
-            {% if not form.disable_csrf %}{% csrf_token %}{% endif %}
+            {% if form.method == "POST" and not form.disable_csrf %}{% csrf_token %}{% endif %}
             {% for field in hidden_fields %}{{ field }}{% endif %}
         {% endspaceless %}
     {% endblock %}
