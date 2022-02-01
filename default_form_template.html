@@ -1,4 +1,4 @@
-<form method="{{ form.method|default:"post" }}"{% if form.get_form_action %} action="{{ form.get_form_action }}"{% endif %} class="form {{ form.css_class }}"{% if form.html_id %} id="{{ form.html_id }}"{% endif %}>  
+<form method="{{ form.method|default:"post" }}"{% if form.action %} action="{{ form.action }}"{% endif %} class="form {{ form.css_class }}"{% if form.html_id %} id="{{ form.html_id }}"{% endif %}>  
     
     {% if form.errors %}
         <ul class="form__errors">
