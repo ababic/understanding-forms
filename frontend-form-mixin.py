@@ -12,14 +12,12 @@ class RenderableFormMixin:
     css_class: str = ""
     submit_button_label: str = "Submit"
         
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.action = self.get_form_action()
-        
     def get_form_action(self):
-        # Override this method if the form needs to post somewhere other than
-        # the current view
+        # Override this method if your form needs to post somewhere other than
+        # the current url/view
         return None
+
+    action = property(get_form_action)
     
 
 class SearchForm(RenderableFormMixin, forms.Form):
