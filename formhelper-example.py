@@ -37,17 +37,17 @@ class SearchForm(RenderableFormMixin, forms.Form):
     
     # Fields
     query = forms.CharField()
-    category = forms.ChoiceField(choices=[('one', "Option one"), ('two', "Option two"), ("three", "Option three")])
-    audience = forms.ChoiceField(choices=[('humans', "Humans"), ('robots", "Robots"), ("aliens", "Aliens")])
+    category = forms.ChoiceField(choices=[("one", "Option one"), ("two", "Option two"), ("three", "Option three")])
+    audience = forms.ChoiceField(choices=[("humans", "Humans"), ("robots", "Robots"), ("aliens", "Aliens")])
                                                                  
     def get_crispy_layout(self):
         return Layout(
-            Field("query", type="search", css_class="some-custom-class", css_id="customid")
+            Field("query", type="search", css_class="some-custom-class", css_id="customid"),
             Fieldset(
                 "Filter results by",
                 "category",
                 "audience",
             ),
-            HTML("<p>Don't forget to click the button below...</p>")
+            HTML("<p>Don't forget to click the button below...</p>"),
             Submit("Search"),
         )                                            
