@@ -39,7 +39,7 @@ class SearchForm(RenderableFormMixin, forms.Form):
     def get_form_helper(self):
         helper = super().get_form_helper()
         helper.layout = Layout(
-            "query"
+            Field("query", type="search", css_class="some-custom-class", css_id="customid")
             Fieldset(
                 "Filter results by",
                 "category",
