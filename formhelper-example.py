@@ -12,6 +12,9 @@ class RenderableFormMixin:
         
     def get_form_action(self):
         return None
+    
+    def get_crispy_layout(self):
+        return None
         
     def get_form_helper(self):
         return FormHelper(
@@ -21,6 +24,7 @@ class RenderableFormMixin:
             form_method=self.method,
             disable_csrf=self.method == "GET" or self.disable_csrf,
             render_hidden_fields=True,
+            layout=self.get_crispy_layout(),
         )
     helper = property(get_form_helper)
 
@@ -36,9 +40,8 @@ class SearchForm(RenderableFormMixin, forms.Form):
     category = forms.ChoiceField(choices=[('one', "Option one"), ('two', "Option two"), ("three", "Option three")])
     audience = forms.ChoiceField(choices=[('humans', "Humans"), ('robots", "Robots"), ("aliens", "Aliens")])
                                                                  
-    def get_form_helper(self):
-        helper = super().get_form_helper()
-        helper.layout = Layout(
+    def get_crispy_layout(self):
+        return Layout(
             Field("query", type="search", css_class="some-custom-class", css_id="customid")
             Fieldset(
                 "Filter results by",
@@ -47,8 +50,4 @@ class SearchForm(RenderableFormMixin, forms.Form):
             ),
             HTML("<p>Don't forget to click the button below...</p>")
             Submit("Search"),
-        )
-        return helper
-                                                       
-                                                                 
-                                                              
+        )                                            
